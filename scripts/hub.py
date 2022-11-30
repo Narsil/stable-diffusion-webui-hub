@@ -36,9 +36,14 @@ def download(repo_id):
         or f.rfilename.endswith(".safetensors")
         or f.rfilename.endswith(".bin")
     )
+
     for filename in filenames:
         cache_filename = hf_hub_download(repo_id=repo_id, filename=filename)
-        os.symlink(cache_filename, os.path.join("models", "Stable-diffusion", filename))
+        new_filename = os.path.join("models", "Stable-diffusion", filename)
+        if os.path.exists(new_filename):
+            new_filename, ext = os.path.splitext(new_filename)
+            new_filename = f"{new_filename}-{time.strftime('%Y%m%d-%H%M%S')}.{ext}"
+        os.symlink(cache_filename, new_filename)
 
 
 def add_tab():
