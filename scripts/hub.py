@@ -34,7 +34,7 @@ def download(repo_id):
         for f in info.siblings
         if f.rfilename.endswith(".ckpt")
         or f.rfilename.endswith(".safetensors")
-        or f.rfilename(".bin")
+        or f.rfilename.endswith(".bin")
     )
     for filename in filenames:
         cache_filename = hf_hub_download(repo_id=repo_id, filename=filename)
