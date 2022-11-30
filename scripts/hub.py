@@ -103,7 +103,7 @@ def add_tab():
             f"""
 <style>{css}</style>
 <p>
-Before your text is sent to the neural network, it gets turned into numbers in a process called tokenization. These tokens are how the neural network reads and interprets text. Thanks to our great friends at Shousetsu愛 for inspiration for this feature.
+New text.
 </p>
 """
         )
